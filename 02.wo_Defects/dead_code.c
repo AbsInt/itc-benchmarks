@@ -223,9 +223,9 @@ void dead_code_012 ()
 	int flag = 1;
 	int a = 0;
 	int ret;
-	while (flag > 0) /*Tool should not detect this line as error*/ /*No ERROR:Dead Code*/
+	while (flag > 0)
 	{
-		a ++;
+		a ++; /*Tool should not detect this line as error*/ /*No ERROR:Dead Code*/
 		break;
 	}
 	ret = a;

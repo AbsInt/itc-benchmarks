@@ -482,8 +482,8 @@ void wrong_arguments_func_pointer_016 ()
   float f=20.5,*str3 = &f;
   char ret;
   char (*func)(char *,int *, float *);
-  func = wrong_arguments_func_pointer_016_func_001; /*Tool should not detect this line as error*//*No ERROR:Wrong arguments passed to a function pointer*/
-  ret = func(str1,str2,str3);
+  func = wrong_arguments_func_pointer_016_func_001;
+  ret = func(str1,str2,str3); /*Tool should not detect this line as error*//*No ERROR:Wrong arguments passed to a function pointer*/
 }
 
 /*
@@ -568,7 +568,7 @@ void wrong_arguments_func_pointer_018_func_003(wrong_arguments_func_pointer_018_
 
 void wrong_arguments_func_pointer_018_func_004(wrong_arguments_func_pointer_018_s_001 st,wrong_arguments_func_pointer_018_s_001* st1)
 {
-	if (func_pointer_018_global_set == MAX)
+	if (func_pointer_018_global_set == 1)
 	{
 		wrong_arguments_func_pointer_018_fptr1_gbl = wrong_arguments_func_pointer_018_func_002;
 		wrong_arguments_func_pointer_018_fptr1_gbl(st,st1); /*Tool should not detect this line as error*//*No ERROR:Wrong arguments passed to a function pointer*/

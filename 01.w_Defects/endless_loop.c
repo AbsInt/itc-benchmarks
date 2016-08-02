@@ -19,9 +19,9 @@ void endless_loop_001 ()
 	int ret;
 	int a = 0;
 	int i;
-	for (i = 0; ; i ++)
+	for (i = 0; ; i ++) /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
 	{
-		a ++; /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
+		a ++;
 	}
 	ret = a;
         sink = ret;
@@ -36,9 +36,9 @@ void endless_loop_002 ()
 	int ret;
 	int a = 0;
 	int i;
-	for (i = 0; i < 10; )
+	for (i = 0; i < 10; ) /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
 	{
-		a ++; /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
+		a ++;
 	}
 	ret = a;
         sink = ret;
@@ -52,9 +52,9 @@ void endless_loop_003 ()
 {
 	int ret;
 	int a = 0;
-	while (1)
+	while (1) /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
 	{
-		a ++; /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
+		a ++;
 	}
 	ret = a;
         sink = ret;
@@ -69,9 +69,9 @@ void endless_loop_004 ()
 	int ret;
 	int a = 0;
 	int flag = 1;
-	while (flag)
+	while (flag) /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
 	{
-		a ++; /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
+		a ++;
 	}
 	ret = a;
         sink = ret;
@@ -90,9 +90,9 @@ void endless_loop_005 ()
 {
 	int ret;
 	int a = 0;
-	while (endless_loop_005_func_001())
+	while (endless_loop_005_func_001()) /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
 	{
-		a ++; /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
+		a ++;
 	}
 	ret = a;
         sink = ret;
@@ -106,9 +106,9 @@ void endless_loop_006_func_001 (int flag)
 {
 	int ret;
 	int a = 0;
-	while (flag)
+	while (flag) /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
 	{
-		a ++; /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
+		a ++;
 	}
 	ret = a;
         sink = ret;
@@ -128,9 +128,9 @@ void endless_loop_007 ()
 	int ret;
 	int a = 0;
 	int flag = 1;
-	while (flag > 0)
+	while (flag > 0) /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
 	{
-		a ++; /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
+		a ++;
 	}
 	ret = a;
         sink = ret;
@@ -145,9 +145,9 @@ void endless_loop_008 ()
 	int ret;
 	int a = 0;
 	int flag = 0;
-	while (flag == 0)
+	while (flag == 0) /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
 	{
-		a ++; /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
+		a ++;
 	}
 	ret = a;
         sink = ret;
@@ -161,9 +161,9 @@ void endless_loop_009 ()
 {
 	int ret;
 	int a = 0;
-	do
+	do /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
 	{
-		a ++; /*Tool should detect this line as error*/ /*ERROR:Unintentional end less loop*/
+		a ++;
 	}
 	while (1);
 	ret = a;

@@ -33,14 +33,14 @@ void return_local_001 ()
 void return_local_002_func_001 (int **pp)
 {
 	static int buf[5];
-	*pp = buf; /*Tool should not detect this line as error*/ /*No ERROR: return - pointer to local variable */
+	*pp = buf;
 }
 
 void return_local_002 ()
 {
 	int *p;
 	return_local_002_func_001(&p);
-	p[3] = 1;
+	p[3] = 1; /*Tool should not detect this line as error*/ /*No ERROR: return - pointer to local variable */
 }
 
 /*

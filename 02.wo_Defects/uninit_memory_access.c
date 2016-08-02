@@ -32,7 +32,7 @@ void uninit_memory_access_001 ()
 */
 void uninit_memory_access_002 ()
 {
-	double *a = (double *) calloc(3,sizeof(double));
+	double *a = (double *) malloc(3 * sizeof(double));
 	if(a!=NULL)
 	{
 		a[1] = 10.00000;
@@ -64,7 +64,7 @@ void uninit_memory_access_003 ()
 void uninit_memory_access_004 ()
 {
 	short **ptr = NULL;
-	short *p1 = (short *) calloc(10,sizeof(short));
+	short *p1 = (short *) malloc(10 * sizeof(short));
 	short *p2 = NULL;
 	if(p1 !=NULL)
 	{
@@ -125,7 +125,7 @@ void uninit_memory_access_006 ()
 {
     char *str1 = (char *) calloc(25,sizeof(char));
     char *str2 = "STRING";
-    uninit_memory_access_006_func_001(str1, str2);
+    uninit_memory_access_006_func_001(str1, str2); /*Tool should not detect this line as error*/ /*No ERROR:Uninitialized Memory Access*/
     printf("%s\n", str1);
 }
 
@@ -343,7 +343,7 @@ short pad;
 void uninit_memory_access_012()
 {
 	uninit_memory_access_012_s_001  *s1, s;
-    s1 = (uninit_memory_access_012_s_001*)calloc(1,sizeof(uninit_memory_access_012_s_001));
+    s1 = (uninit_memory_access_012_s_001*)malloc(sizeof(uninit_memory_access_012_s_001));
     if(s1 !=NULL)
     {
     	s1->int_a = 10;
@@ -372,7 +372,7 @@ void uninit_memory_access_013 ()
   int i;
   uninit_memory_access_013_s_001 *s1, s;
 
-  s1 = (uninit_memory_access_013_s_001*)calloc(1,sizeof(uninit_memory_access_013_s_001));
+  s1 = (uninit_memory_access_013_s_001*)malloc(sizeof(uninit_memory_access_013_s_001));
   s1->int_a = 10;
   s1->int_c = 20;
   s1->bool_b = true;
@@ -452,12 +452,12 @@ int (*uninit_memory_access_015_func_001())[4]
 			         {55,66,77,88}};
 	int i,j;
 	p= (int (*)[]) malloc (sizeof arr);
-	memcpy(p, arr, sizeof(arr));
+	memcpy(p, arr, sizeof(arr)); /*Tool should not detect this line as error*/ /*No ERROR:Uninitialized Memory Access*/
 	for (i = 0;i< 4; i++)
 	{
 		for ( j=0 ;j<4; j++)
 		{
-			*(p[i]+j) += *(p[i]+j); /*Tool should not detect this line as error*/ /*No ERROR:Uninitialized Memory Access*/
+			*(p[i]+j) += *(p[i]+j);
 		}
 	}
 	return p;

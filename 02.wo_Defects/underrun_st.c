@@ -108,11 +108,11 @@ void underrun_st_008 ()
 	int buf[5];
 	int *p;
 	int i;
-	p = &buf[4];
+	p = &buf[5];
 	for (i = 0; i < 5; i ++)
 	{
+		p--;
 		*p = 1; /*Tool should not detect this line as error*/ /*No ERROR:Data Underrun*/
-		p --;
 	}
 }
 
@@ -139,11 +139,11 @@ void underrun_st_010 ()
 {
 	int *p;
 	int i;
-	p = &underrun_st_010_gbl_buf[4];
+	p = &underrun_st_010_gbl_buf[5];
 	for (i = 0; i < 5; i ++)
 	{
-		*p = 1; /*Tool should not detect this line as error*/ /*No ERROR:Data Underrun*/
 		p --;
+		*p = 1; /*Tool should not detect this line as error*/ /*No ERROR:Data Underrun*/
 	}
 }
 
@@ -170,12 +170,12 @@ int underrun_st_012_gbl_buf[5];
 void underrun_st_012 ()
 {
 	int *p;
-	p = &underrun_st_012_gbl_buf[4];
+	p = &underrun_st_012_gbl_buf[5];
 	int i=4;
 	while(i > -1)
 	{
-		*p = 1; /*Tool should not detect this line as error*/ /*No ERROR:Data Underrun*/
 		p --;
+		*p = 1; /*Tool should not detect this line as error*/ /*No ERROR:Data Underrun*/
 		i--;
 	}
 }

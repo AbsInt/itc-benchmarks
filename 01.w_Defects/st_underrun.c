@@ -22,9 +22,9 @@ void st_underrun_001 ()
 	 char buf[10];
 	 strcpy(buf, "my string");
 	 int len = strlen(buf) - 1;
-	 while (buf[len] != 'Z')
+	 while (buf[len] != 'Z') /*Tool should detect this line as error*/ /* Stack Under RUN error */
 	 {
-		 len--; /*Tool should detect this line as error*/ /* Stack Under RUN error */
+		 len--;
 		 /* if (buf[len] == '\0' )
 			 break; */
 	 }
@@ -156,8 +156,8 @@ void st_underrun_005_func_001 (st_underrun_005_s_001 s, int cnt)
 		}
 	    else
 	    {
-	    	/*break;*/ /*Tool should detect this line as error*/ /* Stack Under RUN error */
-			s.buf[cnt] = 'C';
+	    	/*break;*/
+			s.buf[cnt] = 'C'; /*Tool should detect this line as error*/ /* Stack Under RUN error */
 		}
 	}
 }
@@ -224,9 +224,9 @@ void st_underrun_007_func_001 (st_underrun_007_s_001 *s)
 {
 	 int len = strlen(s->buf) - 1;
 	 char c;
-	 for (;s->buf[len] != 'Z';len--)
+	 for (;s->buf[len] != 'Z';len--) /*Tool should detect this line as error*/ /* Stack Under RUN error */
 	 {
-        c = s->buf[len]; /*Tool should detect this line as error*/ /* Stack Under RUN error */
+        c = s->buf[len];
 		 /*if (s->buf[len] == '\0')
 			 break;*/
 	 }
@@ -240,7 +240,7 @@ void st_underrun_007_func_002 (st_underrun_007_s_001 s)
 void st_underrun_007 ()
 {
 	int flag = 0;
-	st_underrun_007_s_001 s;
+	st_underrun_007_s_001 s = {0};
 	s.buf[0] = 1;
 	if (flag >1 )
 	{

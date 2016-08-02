@@ -32,7 +32,7 @@ void uninit_memory_access_001 ()
 */
 void uninit_memory_access_002 ()
 {
-	double *a = (double *) calloc(3,sizeof(double));
+	double *a = (double *) malloc(3 * sizeof(double));
 	if(a!=NULL)
 	{
 	printf("%lf ",a[1]);/*Tool should detect this line as error*/ /*ERROR:Uninitialized Memory Access*/
@@ -50,8 +50,8 @@ void uninit_memory_access_003 ()
 	char *str2 ;
 	if (str1!=NULL)
 	{
-		strcpy(str1, str2);
-        printf("%s %s\n",str1,str2);/*Tool should detect this line as error*/ /*ERROR:Uninitialized Memory Access*/
+		strcpy(str1, str2);/*Tool should detect this line as error*/ /*ERROR:Uninitialized Memory Access*/
+        printf("%s %s\n",str1,str2);
         free(str1);
 	}
 }
@@ -63,7 +63,7 @@ void uninit_memory_access_003 ()
 void uninit_memory_access_004 ()
 {
 	short **ptr = NULL;
-	short *p1 = (short *) calloc(10,sizeof(short));
+	short *p1 = (short *) malloc(10 * sizeof(short));
 	short *p2 = NULL;
 	if(p1 !=NULL)
 	{
@@ -123,8 +123,8 @@ void uninit_memory_access_006 ()
 {
     char *str1 = (char *) calloc(25,sizeof(char));
     char *str2 ;
-    uninit_memory_access_006_func_001(str1, str2);
-    printf("%s\n", str1);/*Tool should detect this line as error*/ /*ERROR:Uninitialized Memory Access*/
+    uninit_memory_access_006_func_001(str1, str2);/*Tool should detect this line as error*/ /*ERROR:Uninitialized Memory Access*/
+    printf("%s\n", str1);
 }
 
 /*
@@ -331,7 +331,7 @@ short pad;
 void uninit_memory_access_012()
 {
 	uninit_memory_access_012_s_001  *s1, s;
-    s1 = (uninit_memory_access_012_s_001*)calloc(1,sizeof(uninit_memory_access_012_s_001));
+    s1 = (uninit_memory_access_012_s_001*)malloc(sizeof(uninit_memory_access_012_s_001));
     if(s1 !=NULL)
     {
     s1->int_a = 10;
@@ -358,7 +358,7 @@ void uninit_memory_access_013 ()
   int i;
   uninit_memory_access_013_s_001 *s1, s;
 
-  s1 = (uninit_memory_access_013_s_001*)calloc(1,sizeof(uninit_memory_access_013_s_001));
+  s1 = (uninit_memory_access_013_s_001*)malloc(sizeof(uninit_memory_access_013_s_001));
   s1->int_a = 10;
   s1->int_c = 20;
 
@@ -431,12 +431,12 @@ int (*uninit_memory_access_015_func_001())[4]
 	int arr[4][4];
 	int i,j;
 	p= (int (*)[]) malloc (sizeof arr);
-	memcpy(p, arr, sizeof(arr));
+	memcpy(p, arr, sizeof(arr));/*Tool should detect this line as error*/ /*ERROR:Uninitialized Memory Access*/
 	for (i = 0;i< 4; i++)
 	{
 		for ( j=0 ;j<4; j++)
 		{
-			*(p[i]+j) += *(p[i]+j);/*Tool should detect this line as error*/ /*ERROR:Uninitialized Memory Access*/
+			*(p[i]+j) += *(p[i]+j);
 		}
 	}
 	return p;

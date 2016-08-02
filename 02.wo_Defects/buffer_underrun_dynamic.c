@@ -571,9 +571,9 @@ void dynamic_buffer_underrun_031()
 	if(ptr1!=NULL)
 	{
 	    ptr1[11]='\0';
-	    for(i=10;i>-1;i--)/*Tool should Not detect this line as error*/ /*No ERROR:Buffer Underrun*/
+	    for(i=10;i>-1;i--)
 	    {
-	        ptr1[i]='a';
+	        ptr1[i]='a';/*Tool should Not detect this line as error*/ /*No ERROR:Buffer Underrun*/
 	    }
 	    memcpy(ptr2,ptr1,12);
 	    free(ptr1);
@@ -696,7 +696,9 @@ void dynamic_buffer_underrun_036()
 	  char *newTest= (char*) malloc(15*sizeof(char));
 	  if(newTest!=NULL)
 	  {
-	     memcpy (newTest,test,15);/*Tool should Not detect this line as error*/ /*No ERROR:Buffer Underrun*/
+	     memcpy (newTest,test,15);
+	     char c ;
+	     c = newTest[10];/*Tool should Not detect this line as error*/ /*No ERROR:Buffer Underrun*/
 	     free(newTest);
 	  }
  }
@@ -773,7 +775,7 @@ void dynamic_buffer_underrun_039()
 	{
 		for(i=0;i<15;i++)
 		{
-			memset(ptr_s1,1,15*sizeof(dynamic_buffer_underrun_s_008));/*Tool should Not detect this line as error*/ /*No ERROR:Buffer Underrun*/
+			memset(ptr_s1 + i, 1, sizeof(dynamic_buffer_underrun_s_008));/*Tool should Not detect this line as error*/ /*No ERROR:Buffer Underrun*/
 		}
 	    memcpy(ptr_s2,ptr_s1,15*sizeof(dynamic_buffer_underrun_s_008));
 	    free(ptr_s1);

@@ -22,8 +22,9 @@ void deletion_of_data_structure_sentinel_001()
 	foo=calloc(10,sizeof(char));
 	for(counter=0;counter<10;counter++)
 	{
-		foo[counter]='a'; /*Tool should detect this line as error*/ /*ERROR:Deletion of a data structure sentinel*/
+		foo[counter]='a';
 	}
+	strlen(foo); /*Tool should detect this line as error*/ /*ERROR:Deletion of a data structure sentinel*/
 	free(foo);
 }
 
@@ -37,7 +38,8 @@ void deletion_of_data_structure_sentinel_002()
 {
 	char str1[]="This is a string";
 	char str2[16];
-	memcpy(str2,str1,strlen(str1)); /*Tool should detect this line as error*/ /*ERROR:Deletion of a data structure sentinel*/
+	memcpy(str2,str1,strlen(str1));
+	strlen(str2); /*Tool should detect this line as error*/ /*ERROR:Deletion of a data structure sentinel*/
 }
 
 /*
@@ -58,7 +60,8 @@ void deletion_of_data_structure_sentinel_003()
 	}
 	
 	ptr[i]='\0';
-	memcpy(str,ptr,16); /*Tool should detect this line as error*/ /*ERROR:Deletion of a data structure sentinel*/
+	memcpy(str,ptr,16);
+	strlen(str); /*Tool should detect this line as error*/ /*ERROR:Deletion of a data structure sentinel*/
 }
 
 extern volatile int vflag;

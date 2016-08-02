@@ -91,14 +91,14 @@ void uninit_pointer_005_func_001 (int *pbuf[])
 	pbuf[3] = buf4;
 	pbuf[4] = buf5;
 	int ret;
-	ret = pbuf[1][1];
+	ret = pbuf[1][1]; /*Tool should not detect this line as error*/ /*No ERROR:Uninitialized pointer*/
         sink = ret;
 
 }
 void uninit_pointer_005 ()
 {
 	int *pbuf[5];
-	uninit_pointer_005_func_001(pbuf); /*Tool should not detect this line as error*/ /*No ERROR:Uninitialized pointer*/
+	uninit_pointer_005_func_001(pbuf);
 }
 
 /*
@@ -157,7 +157,7 @@ typedef struct {
 void uninit_pointer_008_func_001 (uninit_pointer_008_s_001 *p)
 {
 	int ret = 10;
-	p->uninit = ret;
+	p->uninit = ret; /*Tool should not detect this line as error*/ /*No ERROR:Uninitialized pointer*/
 }
 void uninit_pointer_008 ()
 {
@@ -165,7 +165,7 @@ void uninit_pointer_008 ()
 	s.a = 1;
 	s.b = 1;
 	s.uninit = 1;
-	uninit_pointer_008_func_001(&s); /*Tool should not detect this line as error*/ /*No ERROR:Uninitialized pointer*/
+	uninit_pointer_008_func_001(&s);
 }
 
 /*
@@ -272,20 +272,30 @@ void uninit_pointer_012 ()
 */
 void uninit_pointer_013 ()
 {
-	int **ptr = (int**) malloc(3*sizeof(int*));
+	int n = 3;
+	int **ptr = (int**) malloc(n*sizeof(int*));
 		int i,j;
 
-		for(i=0;i<3;i++)
-			ptr[i]=(int*) malloc(3*sizeof(int));
+		for(i=0;i<n;i++)
+			ptr[i]=(int*) malloc(n*sizeof(int));
 	    int arr[3][3] = {{1,2,3},
 				         {11,12,13},
 		                 {21,22,23}};
 
-		for(i=0;i<3;i++)
+		for(i=0;i<n;i++)
 		{
-			for(j=0;j<3;j++)
+			for(j=0;j<n;j++)
 			{
-				*(*(ptr+i)+j)= arr[i][j]; /*Tool should not detect this line as error*/ /*No ERROR:Uninitialized pointer*/
+				*(*(ptr+i)+j)= arr[i][j];
+			}
+		}
+
+		int sum = 0;
+		for(i=0;i<n;i++)
+		{
+			for(j=0;j<n;j++)
+			{
+				sum += *(*(ptr+i)+j); /*Tool should not detect this line as error*/ /*No ERROR:Uninitialized pointer*/
 			}
 		    free(ptr[i]);
 		    ptr[i] = NULL;
@@ -311,7 +321,7 @@ void uninit_pointer_014_func_001 (int flag)
 	{
 		case 1:
 		{
-			s = (uninit_pointer_014_s_001 *)calloc(1,sizeof(uninit_pointer_014_s_001));
+			s = (uninit_pointer_014_s_001 *)malloc(sizeof(uninit_pointer_014_s_001));
 			if(s!=NULL)
 			{
 				s->a = 10;

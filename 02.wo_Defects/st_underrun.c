@@ -22,9 +22,9 @@ void st_underrun_001 ()
 	 char buf[10];
 	 strcpy(buf, "my string");
 	 int len = strlen(buf) -1;
-	 while (buf[len] != 'Z')
+	 while (buf[len] != 'Z') /*Tool should not detect this line as error*/ /* No Stack Under RUN error */
 	 {
-		 len--; /*Tool should not detect this line as error*/ /* No Stack Under RUN error */
+		 len--;
 		 if ( len < 0 )
 			 break;
 	 }
@@ -50,7 +50,7 @@ void st_underrun_002_func_001 (st_underrun_002_s_001 s)
 	 int len = strlen(s.buf) - 1;
 	 for (;s.buf[len] != 'Z';len--)  /*Tool should not detect this line as error*/ /* No Stack Under RUN error */
 	 {
-	    if ( len < 0 )
+	    if ( len <= 0 )
 			 break;
 	 }
 }
@@ -157,8 +157,8 @@ void st_underrun_005_func_001 (st_underrun_005_s_001 s, int cnt)
 		}
 	    else
 	    {
-	    	break;
-			/*s.buf[cnt] = 'C';*/ /*Tool should not detect this line as error*/ /* No Stack Under RUN error */
+			s.buf[cnt] = 'C'; /*Tool should not detect this line as error*/ /* No Stack Under RUN error */
+			break;
 		}
 	}
 }
@@ -232,10 +232,10 @@ void st_underrun_007_func_001 (st_underrun_007_s_001 *s)
 {
 	 int len = strlen(s->buf) - 1;
 	 char c = 0;
-	 for (;s->buf[len] != 'Z';len--)  
+	 for (;s->buf[len] != 'Z';len--) /*Tool should not detect this line as error*/ /* No Stack Under RUN error */
 	 {
-        c = s->buf[len]; /*Tool should not detect this line as error*/ /* No Stack Under RUN error */
-		 if ( len < 0 )
+        c = s->buf[len];
+		 if ( len <= 0 )
 			 break;
 	 }
          sink = c;
@@ -249,7 +249,7 @@ void st_underrun_007_func_002 (st_underrun_007_s_001 s)
 void st_underrun_007 ()
 {
 	int flag = 0;
-	st_underrun_007_s_001 s;
+	st_underrun_007_s_001 s = {0};
 	s.buf[0] = 1;
 	if (flag >1 )
 	{

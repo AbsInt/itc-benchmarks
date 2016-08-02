@@ -116,7 +116,7 @@ void uninit_var_007 ()
  */
 int uninit_var_008_func_001 (int a)
 {
-	static int ret;
+	static int ret=10;
 	ret -= a;
 	return ret;
 }
@@ -182,6 +182,7 @@ void uninit_var_011 ()
 {
 	int arr[5];
 	int p ;
+	arr[0] = 1;
 	p= uninit_var_011_func_001(arr,(sizeof(arr)/sizeof(int)));
 }
 
@@ -197,7 +198,7 @@ typedef struct {
 
 int uninit_var_012_func_001 (uninit_var_012_s_001 s1)
 {
-	switch ( (s1.a + s1.b +s1.uninit) )/*Tool should detect this line as error*/ /*ERROR:Uninitialized Variable*/
+	switch ( (s1.a + s1.b +s1.uninit) )
 	{
 		case 5:
 		{
@@ -222,7 +223,7 @@ void uninit_var_012 ()
 	s.a = 2;
 	s.b = 1;
 	int ret;
-	ret = uninit_var_012_func_001 (s);
+	ret = uninit_var_012_func_001 (s);/*Tool should detect this line as error*/ /*ERROR:Uninitialized Variable*/
 	if(ret >=0)
 		r = s;
 }
@@ -238,8 +239,8 @@ typedef enum
 
 int uninit_var_013_func_001 (void )
 {
-	values val ;/*Tool should detect this line as error*/ /*ERROR:Uninitialized Variable*/
-	return val;
+	values val ;
+	return val;/*Tool should detect this line as error*/ /*ERROR:Uninitialized Variable*/
 }
 
 void uninit_var_013 ()
@@ -263,7 +264,7 @@ uninit_var_014_s_001 uninit_var_014_func_001 (uninit_var_014_s_001 s1)
 	uninit_var_014_s_001 ret;
 	ret.a = (++s1.a);
 	ret.b = (++s1.b);
-	ret.uninit = (++s1.uninit);/*Tool should detect this line as error*/ /*ERROR:Uninitialized Variable*/
+	ret.uninit = (++s1.uninit);
 	return ret;
 }
 
@@ -272,7 +273,7 @@ void uninit_var_014 ()
 	uninit_var_014_s_001 s,r;
 	s.a = 1;
 	s.b = 1;
-	r = uninit_var_014_func_001(s);
+	r = uninit_var_014_func_001(s);/*Tool should detect this line as error*/ /*ERROR:Uninitialized Variable*/
 }
 
 /*

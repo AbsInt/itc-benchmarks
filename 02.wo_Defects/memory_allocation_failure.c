@@ -710,7 +710,7 @@ void memory_allocation_failure_016_func_002(int flag)
    }
    else
    {
-	   memory_allocation_failure_016_gbl_ptr1 = (int *) malloc (memory_allocation_failure_016_func_001(0)*sizeof(int));
+	   memory_allocation_failure_016_gbl_ptr1 = (int *) malloc (memory_allocation_failure_016_func_001(1)*sizeof(int));
 	   memory_allocation_failure_016_gbl_ptr2 = (int *) malloc (memory_allocation_failure_016_func_001(0)*sizeof(int)); /*Tool should not detect this line as error*/ /*No ERROR:Memory allocation failure */
    }
 
@@ -718,10 +718,10 @@ void memory_allocation_failure_016_func_002(int flag)
 
 void memory_allocation_failure_016 ()
 {
-	int * ptr1 = (int *) malloc (memory_allocation_failure_016_func_001(0)*sizeof(int));
-	int * ptr2 = (int *) malloc (memory_allocation_failure_016_func_001(0)*sizeof(int));
+	int * ptr1 = (int *) malloc (memory_allocation_failure_016_func_001(1)*sizeof(int));
+	int * ptr2 = (int *) malloc (memory_allocation_failure_016_func_001(1)*sizeof(int));
     *(ptr1+1) = 10;
-    memory_allocation_failure_016_func_002(0);
+    memory_allocation_failure_016_func_002(1);
 
     free(memory_allocation_failure_016_gbl_ptr1);
     free(memory_allocation_failure_016_gbl_ptr2);

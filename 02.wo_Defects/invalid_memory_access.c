@@ -478,9 +478,10 @@ int invalid_memory_access_014 (int flag)
 	{
 		goto my_label;
 	}
+my_label2:
 	if(ptr!=NULL)
     ret = ptr[2]; /*Tool should not detect this line as error*/ /*No ERROR:Invalid memory access to already freed area*/
-	goto my_label2;
+	goto my_label3;
 my_label:
 	    {
             for(i=0;i<5;i++)
@@ -489,7 +490,8 @@ my_label:
             		ptr[i] = arr[i];
             }
 	    }
-my_label2:
+	goto my_label2;
+my_label3:
     free(ptr);
 	return ret;
 }

@@ -619,8 +619,8 @@ void overrun_st_044 ()
 	p = buf;
 	for (i = 0; i < 5; i ++)
 	{
-		*p = 1;
-		p ++; /*Tool not should detect this line as error*/ /*No ERROR: buffer overrun */
+		*p = 1; /*Tool not should detect this line as error*/ /*No ERROR: buffer overrun */
+		p ++;
 	}
 }
 

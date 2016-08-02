@@ -470,12 +470,10 @@ int invalid_memory_access_014 (int flag)
 	{
 		goto my_label;
 	}
+my_label2:
 	if(ptr!=NULL)
-	{
-   		goto my_label2;
         ret = ptr[2];/*Tool should detect this line as error*/ /*ERROR:Invalid memory access to already freed area*/
-
-	}
+	goto my_label3;
 my_label:
 	    {
             for(i=0;i<5;i++)
@@ -485,8 +483,9 @@ my_label:
             }
 
 	    }
-my_label2:
     free(ptr);
+	goto my_label2;
+my_label3:
 	return ret;
 }
 

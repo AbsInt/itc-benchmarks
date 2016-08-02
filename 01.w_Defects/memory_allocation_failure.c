@@ -38,10 +38,10 @@ void memory_allocation_failure_001 ()
 	long *buf;
 	for (i=0;;i++)
 	{
-		buf=(long*) calloc(5,sizeof(long));
+		buf=(long*) calloc(5,sizeof(long)); /*Tool should detect this line as error*/ /*ERROR:Memory allocation failure */
 		if(buf !=NULL)
 		{
-		     buf[1]=1;/*Tool should detect this line as error*/ /*ERROR:Memory allocation failure */
+		     buf[1]=1;
 		}
 	}
 }
@@ -549,7 +549,7 @@ void memory_allocation_failure_014 ()
 	char  **dptr,a = 0;
 	double *ptr,b;
 	int i,j;
-	static int staticflag=10;
+	static int staticflag=0;
     if (staticflag == 10)
     {
     	  	ptr= (double*) malloc(10*sizeof(double));
@@ -693,7 +693,7 @@ void memory_allocation_failure_016_func_002(int flag)
    }
    else
    {
-	   memory_allocation_failure_016_gbl_ptr1 = (int *) malloc (memory_allocation_failure_016_func_001(0)*sizeof(int));
+	   memory_allocation_failure_016_gbl_ptr1 = (int *) malloc (memory_allocation_failure_016_func_001(1)*sizeof(int));
 	   memory_allocation_failure_016_gbl_ptr2 = (int *) malloc (memory_allocation_failure_016_func_001(0)*sizeof(int));/*Tool should detect this line as error*/ /*ERROR:Memory allocation failure */
    }
 
@@ -701,10 +701,10 @@ void memory_allocation_failure_016_func_002(int flag)
 
 void memory_allocation_failure_016 ()
 {
-	int * ptr1 = (int *) malloc (memory_allocation_failure_016_func_001(0)*sizeof(int));
-	int * ptr2 = (int *) malloc (memory_allocation_failure_016_func_001(0)*sizeof(int));
+	int * ptr1 = (int *) malloc (memory_allocation_failure_016_func_001(1)*sizeof(int));
+	int * ptr2 = (int *) malloc (memory_allocation_failure_016_func_001(1)*sizeof(int));
     *(ptr1+1) = 10;
-    memory_allocation_failure_016_func_002(0);
+    memory_allocation_failure_016_func_002(1);
 
     free(memory_allocation_failure_016_gbl_ptr1);
     free(memory_allocation_failure_016_gbl_ptr2);

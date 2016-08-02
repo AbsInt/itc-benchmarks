@@ -225,9 +225,9 @@ void dead_code_012 ()
 	int flag = 0;
 	int a = 0;
 	int ret;
-	while (flag > 0) /*Tool should detect this line as error*/ /*ERROR:Dead Code*/
+	while (flag > 0)
 	{
-		a ++;
+		a ++; /*Tool should detect this line as error*/ /*ERROR:Dead Code*/
 		break;
 	}
 	ret = a;

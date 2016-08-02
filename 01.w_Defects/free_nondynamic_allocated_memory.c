@@ -44,8 +44,8 @@ char *free_nondynamic_allocated_memory_003_gbl_ptr;
 
 void free_nondynamic_allocated_memory_003()
 {
-	free_nondynamic_allocated_memory_003_gbl_ptr = "STRING"; /*Tool should detect this line as error*/ /*ERROR:Free memory not allocated dynamically*/
-	free(free_nondynamic_allocated_memory_003_gbl_ptr);
+	free_nondynamic_allocated_memory_003_gbl_ptr = "STRING";
+	free(free_nondynamic_allocated_memory_003_gbl_ptr); /*Tool should detect this line as error*/ /*ERROR:Free memory not allocated dynamically*/
 }
 
 
@@ -206,7 +206,7 @@ void free_nondynamic_allocated_memory_013()
 	free_nondynamic_allocated_memory_struct_013* new_struct=malloc(sizeof(free_nondynamic_allocated_memory_struct_013));
 	free_nondynamic_allocated_memory_struct_013 str;
 	new_struct->next = &str;
-	free(new_struct->next);
+	free(new_struct->next); /*Tool should detect this line as error*/ /*ERROR:Free memory not allocated dynamically*/
 	free(new_struct);
 }
 
