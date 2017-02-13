@@ -7,9 +7,7 @@
 #define HEADERFILE_H_
 
 #include <stdio.h>
-#ifndef _MSC_VER
 #include <stdlib.h>
-#endif
 #include <math.h>
 #include <string.h>
 #include <pthread.h>
