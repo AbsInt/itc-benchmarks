@@ -39,3 +39,8 @@ config.status
 .deps
 
 !win32/*lib
+
+*.vcxproj.filters
+Debug
+x64
+x86
