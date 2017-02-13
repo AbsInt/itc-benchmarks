@@ -8,7 +8,6 @@
 * Description: Defect Free Code to identify false positives during useless assignment
 */
 #include "HeaderFile.h"
-int rand (void);
 
 /*
  * Types of defects: a pointless assignment

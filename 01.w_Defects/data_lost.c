@@ -8,7 +8,6 @@
 * Description: Defect Code to identify defects in data lost at cast
 */
 
-int rand (void);
 #include "HeaderFile.h"
 /*
  * Types of defects: assignment from large to small size data type - data lost  problem

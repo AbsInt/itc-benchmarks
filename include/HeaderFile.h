@@ -12,7 +12,9 @@
 #include <string.h>
 #include <pthread.h>
 #include <ctype.h>
+#ifndef _MSC_VER
 #include <unistd.h>
+#endif
 #include <limits.h>
 
 extern int idx, sink;

@@ -77,11 +77,13 @@ int main(int argc,char*argv[])
 		dead_code_main();
 	}
 
+#ifndef _MSC_VER
 	/* Dead lock */
 	if (vflag_file ==10 || vflag_file == 888)
 	{
 		dead_lock_main();
 	}
+#endif
 
     /* Deletion of Structure sentinel */
 	if(vflag_file==11 || vflag_file == 888)
@@ -95,6 +97,7 @@ int main(int argc,char*argv[])
 		double_free_main ();
 	}
 
+#ifndef _MSC_VER
 	/* Double lock*/
 	if (vflag_file ==13 || vflag_file == 888)
 	{
@@ -106,6 +109,7 @@ int main(int argc,char*argv[])
 	{
 		double_release_main();
 	}
+#endif
 
 	/* Unintentional Endless loop */
 	if (vflag_file ==15 || vflag_file == 888)
@@ -173,6 +177,7 @@ int main(int argc,char*argv[])
 		littlemem_st_main();
 	}
 
+#ifndef _MSC_VER
 	/* Live Lock */
 	if (vflag_file ==26 || vflag_file == 888)
 	{
@@ -184,6 +189,7 @@ int main(int argc,char*argv[])
 	{
 		lock_never_unlock_main();
 	}
+#endif
 
 	/*Memory allocation failure main*/
 	if (vflag_file ==28 || vflag_file == 888)
@@ -233,11 +239,13 @@ int main(int argc,char*argv[])
 		ptr_subtraction_main();
 	}
 
+#ifndef _MSC_VER
 	/* Race condition */
 	if (vflag_file ==36 || vflag_file == 888)
 	{
 		race_condition_main ();
 	}
+#endif
 
 	/* Redundant Condition */
 	if (vflag_file ==37 || vflag_file == 888)
@@ -257,6 +265,7 @@ int main(int argc,char*argv[])
 		sign_conv_main();
 	}
 
+#ifndef _MSC_VER
 	/* Sleep lock */
 	if (vflag_file ==40 || vflag_file == 888)
 	{
@@ -268,6 +277,7 @@ int main(int argc,char*argv[])
 	{
 		st_cross_thread_access_main();
 	}
+#endif
 
 	/* Stack overflow */
 	if (vflag_file ==42 || vflag_file == 888)
@@ -305,11 +315,13 @@ int main(int argc,char*argv[])
 		uninit_var_main();
 	}
 
+#ifndef _MSC_VER
 	/*Unlock without lock main*/
 	if (vflag_file ==48 || vflag_file == 888)
 	{
 		unlock_without_lock_main();
 	}
+#endif
 
 	/* Unused variable */
 	if (vflag_file ==49 || vflag_file == 888)

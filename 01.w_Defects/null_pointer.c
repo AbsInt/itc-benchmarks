@@ -11,8 +11,6 @@
 static int sink;
 
 #include "HeaderFile.h"
-int rand (void);
-
 /*
  * Defect types : NULL pointer dereference (access)
  * Complexity: Assign a Constant value to NULL single pointer

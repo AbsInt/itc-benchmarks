@@ -37,3 +37,10 @@ config.status
 /missing
 /stamp-h1
 .deps
+
+!win32/*lib
+
+*.vcxproj.filters
+Debug
+x64
+x86

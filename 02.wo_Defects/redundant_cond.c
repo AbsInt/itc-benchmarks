@@ -10,8 +10,6 @@
 
 #include "HeaderFile.h"
 
-int rand (void);
-
 /*
  * Types of defects: redundant condition
  * Complexity: the if statement	(5<a&&10<a)

@@ -12,7 +12,6 @@
 
 /* # Include "stubs.h" */
 #include "HeaderFile.h"
-int rand (void);
 
 /*
 * Types of defects: double release

@@ -9,8 +9,6 @@
 */
 
 #include "HeaderFile.h"
-int rand (void);
-
 /*
  * Type of defect: there is a path that does not return a return value
  * Complexity: if it contains if statements
