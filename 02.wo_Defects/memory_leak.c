@@ -10,8 +10,6 @@
 
 #include "HeaderFile.h"
 
-int rand (void);
-
 /*
 * Types of defects: Memory Leakage - Allocate Memory and not freeing it
 * Complexity: When using a pointer to char in an infinite for loop

@@ -8,7 +8,6 @@
 * Description: Defect Free Code to identify false positives in bit shift errors
 */
 #include "HeaderFile.h"
-int rand (void);
 
 /*
  * Types of defects: BitShift errors

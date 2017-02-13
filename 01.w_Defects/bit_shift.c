@@ -8,7 +8,6 @@
 * Description: Defect Code to identify bit shift errors
 */
 #include "HeaderFile.h"
-int rand (void);
 
 /*
   * Types of defects: bit shift error

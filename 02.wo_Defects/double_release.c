@@ -12,8 +12,6 @@
 
 #include "HeaderFile.h"
 
-int rand (void);
-
 /*
 * Types of defects: double release
 * Complexity: double release

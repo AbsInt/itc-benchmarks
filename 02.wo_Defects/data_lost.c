@@ -10,7 +10,6 @@
 
 static int sink;
 
-int rand (void);
 #include "HeaderFile.h"
 /*
  * Types of defects: assignment from large to small size data type - data lost  problem

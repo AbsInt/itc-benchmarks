@@ -26,7 +26,6 @@
 #include <netinet/in.h>
 #endif
 #define NULL ((void *)0)
-int rand (void);
 
 /*
  * Types of defects: long lock time

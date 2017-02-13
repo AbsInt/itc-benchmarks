@@ -10,8 +10,6 @@
 
 #include "HeaderFile.h"
 
-int rand (void);
-
 /*
  * Defect types :signed/unsigned The issues associated with assignment
  * Complexity: char	signed - unsigned	unsigned char	Variable

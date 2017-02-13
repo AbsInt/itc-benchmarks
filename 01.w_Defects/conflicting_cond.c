@@ -8,7 +8,6 @@
 *
 */
 #include "HeaderFile.h"
-int rand (void);
 
 /*
  * Types of defects: contradict

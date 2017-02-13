@@ -11,7 +11,6 @@
 static int sink;
 
 #include "HeaderFile.h"
-int rand (void);
 
 /*
  * Types of defects: overflow

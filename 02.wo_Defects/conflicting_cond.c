@@ -8,7 +8,6 @@
 * Description: Defect Free Code to identify false positives occurring in contradicting conditions
 */
 #include "HeaderFile.h"
-int rand (void);
 
 /*
  * Types of defects: contradict condition
